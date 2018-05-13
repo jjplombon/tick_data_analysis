@@ -171,6 +171,46 @@ def get_current_day_file_bid_ask( symbol ):
     current_day_file = symbol + '_' + month + '_' + day + '_' + year + '_bid_offer.txt'
     
     return current_day_file
+    
+def get_last_business_day_file_bid_ask( symbol ):
+    last_business_idx = 4
+    last_business_day_file = ''
+    
+    m_getLastFiveTradingDays()
+     
+    day = days[last_business_idx]
+    month = months[last_business_idx]
+    year = years[last_business_idx]
+    
+    if len(day) == 1:
+        day = '0' + day
+    if len(month) == 1:
+        month = '0' + month
+    
+    # format:  IWM_05_02_2018_bid_offer.txt
+    last_business_day_file = symbol + '_' + month + '_' + day + '_' + year + '_bid_offer.txt'
+    
+    return last_business_day_file
+    
+def get_2nd_to_last_business_day_file_bid_ask( symbol ):
+    second_to_business_idx = 3
+    second_to_last_business_day_file = ''
+    
+    m_getLastFiveTradingDays()
+     
+    day = days[second_to_business_idx]
+    month = months[second_to_business_idx]
+    year = years[second_to_business_idx]
+    
+    if len(day) == 1:
+        day = '0' + day
+    if len(month) == 1:
+        month = '0' + month
+    
+    # format:  IWM_05_02_2018_bid_offer.txt
+    second_to_last_business_day_file = symbol + '_' + month + '_' + day + '_' + year + '_bid_offer.txt'
+    
+    return second_to_last_business_day_file
 
 def get_current_day_file_trade( symbol ):
     current_day_idx = 5
@@ -191,6 +231,45 @@ def get_current_day_file_trade( symbol ):
     current_day_file = symbol + '_' + month + '_' + day + '_' + year + '_trade.txt'
     
     return current_day_file
+    
+def get_last_business_day_file_trade( symbol ):
+    last_business_idx = 4
+    last_business_day_file = ''
+    
+    m_getLastFiveTradingDays()
+     
+    day = days[last_business_idx]
+    month = months[last_business_idx]
+    year = years[last_business_idx]
+    
+    if len(day) == 1:
+        day = '0' + day
+    if len(month) == 1:
+        month = '0' + month
+    
+    # format:  IWM_05_02_2018_bid_offer.txt
+    last_business_day_file = symbol + '_' + month + '_' + day + '_' + year + '_trade.txt'
+    
+    return last_business_day_file
+    
+
+def is_non_business_day():
+    #  Determine current Day:
+    now   = dt.date.today()
+    #print ( 'Today: {}'.format(now) )
+    #print ( 'The day today: {}'.format(now.day) )
+    #print ( 'The current and past business days: {}, {}, {}, {}, {}, {}'.format(day_0.day, day_1.day, day_2.day, day_3.day, day_4.day, day_5.day, now.day) )
+    
+    #  Does current day belong to the last 5 business days?
+    if day_0.day == now.day:
+        return False
+    if day_1.day == now.day:
+        return False
+    
+    return True
+    
+#b_today_business_day = is_non_business_day()
+#print b_today_business_day
 
 #-----------------------------------------------------------------------------------------------------
 #
