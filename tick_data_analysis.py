@@ -106,6 +106,9 @@ def gap_analysis_bid_ask_tick_data( df_tick_data, symbol ):
     #  Current business day open:
     #  df_tick_data
     m_market_open_index = return_open_datetime_index( df_tick_data )
+    if m_market_open_index == -1:
+        print 'Still in Pre-market, market is not open, current open is last print...'
+    
     current_open = df_tick_data['bid'][m_market_open_index]
     gap_open = current_open - prev_close
     print ('Open: {}, Previous Close: {}, Gap = {}'.format( current_open, prev_close, gap_open ) )
