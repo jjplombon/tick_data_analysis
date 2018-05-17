@@ -82,8 +82,8 @@ def get_last_business_day_trade_filename( symbol ):
 #  Test code for spawning an Internet Explorer web browser
 # For Windows
 #  Currently launches Internet Explorer...
-#b_spawn_IE_browsers_for_net_fonds_csv_data_dumps = True
 b_spawn_IE_browsers_for_net_fonds_csv_data_dumps = False
+#b_spawn_IE_browsers_for_net_fonds_csv_data_dumps = True
 if b_spawn_IE_browsers_for_net_fonds_csv_data_dumps:
     str_full_url_bid_offer_file = dmy_state.get_bid_ask_dump_url_current_day(symbol)
     str_full_url_bid_offer_file_LtoStr = ''.join(str_full_url_bid_offer_file)
